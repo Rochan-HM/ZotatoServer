@@ -17,9 +17,11 @@ router.get("/reviews/:id", async (req, res) => {
         const local_reviews = await Review.find({ businessID: id });
 
         const all_reviews = [];
+        let index = 0;
 
         for (const review of yelp_reviews.reviews) {
             all_reviews.push({
+                id: index++,
                 source: "yelp",
                 text: review.text,
             });
@@ -27,6 +29,7 @@ router.get("/reviews/:id", async (req, res) => {
 
         for (const review of local_reviews) {
             all_reviews.push({
+                id: index++,
                 source: "zotato",
                 text: review.review,
             });
