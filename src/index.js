@@ -47,6 +47,6 @@ app.use(authRoutes);
 app.use(reviewRoutes);
 app.use(trackRoutes);
 
-app.listen($process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server running on port 3000");
 });
