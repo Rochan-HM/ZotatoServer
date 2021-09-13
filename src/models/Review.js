@@ -7,7 +7,6 @@ const reviewSchema = new mongoose.Schema({
     },
     businessID: {
         type: String,
-        unique: true,
         required: true,
     },
     review: {
