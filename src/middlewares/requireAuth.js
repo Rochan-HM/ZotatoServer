@@ -7,13 +7,13 @@ module.exports = (req, res, next) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
-        console.log("No auth header. 401 retuerned");
         return res.status(401).send({ error: "You must be logged in." });
     }
 
     const token = authorization.replace("Bearer ", "");
     jwt.verify(token, process.env.SECRET_KEY, async (err, payload) => {
         if (err) {
+            console.log(err);
             return res.status(401).send({ error: "You must be logged in." });
         }
 
