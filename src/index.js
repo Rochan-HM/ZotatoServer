@@ -1,11 +1,9 @@
 require("./models/User");
-require("./models/Track");
 require("./models/Review");
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
-const trackRoutes = require("./routes/trackRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const businessRoutes = require("./routes/businessRoutes");
 const requireAuth = require("./middlewares/requireAuth");
@@ -44,7 +42,6 @@ app.get("/me", requireAuth, (req, res) => {
 app.use(businessRoutes);
 app.use(authRoutes);
 app.use(reviewRoutes);
-app.use(trackRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server running on port 3000");

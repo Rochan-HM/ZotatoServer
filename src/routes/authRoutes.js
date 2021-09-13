@@ -8,8 +8,6 @@ const router = express.Router();
 
 router.post("/signup", async (req, res) => {
     const { email, password } = req.body;
-    console.log(req.body);
-    console.log(req);
 
     try {
         const user = new User({ email, password });
@@ -19,13 +17,12 @@ router.post("/signup", async (req, res) => {
         res.send({ token });
     } catch (err) {
         console.log("Signup Route", err.message);
-        return res.status(422).send(err.message);
+        return res.status(422).send({ error: err.message });
     }
 });
 
 router.post("/signin", async (req, res) => {
     const { email, password } = req.body;
-    console.log(req.body);
 
     if (!email || !password) {
         return res

@@ -38,11 +38,11 @@ router.get("/reviews/:id", async (req, res) => {
         res.send(all_reviews);
     } catch (e) {
         console.log(e);
-        res.status(400).send("Invalid request");
+        res.status(400).send({ error: "Invalid request" });
     }
 });
 
-router.post("/reviews/", requireAuth, async (req, res) => {
+router.post("/reviews", requireAuth, async (req, res) => {
     const { businessID, review } = req.body;
 
     if (!businessID || !review) {
