@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
+        console.log("No auth header. 401 retuerned");
         return res.status(401).send({ error: "You must be logged in." });
     }
 
