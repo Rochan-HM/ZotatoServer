@@ -44,7 +44,6 @@ router.get("/reviews/:id", async (req, res) => {
 
 router.post("/reviews", requireAuth, async (req, res) => {
     const { businessID, review } = req.body;
-    console.log(req);
 
     if (!businessID || !review) {
         return res

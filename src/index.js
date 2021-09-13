@@ -15,9 +15,7 @@ app.use(express.json());
 const mongoUri = process.env.MONGO_URI;
 
 if (!mongoUri) {
-    throw new Error(
-        `MongoURI was not supplied.  Make sure you watch the video on setting up Mongo DB!`
-    );
+    throw new Error(`MongoURI not present.`);
 }
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
@@ -44,5 +42,5 @@ app.use(authRoutes);
 app.use(reviewRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
-    console.log("Server running on port 3000");
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
 });

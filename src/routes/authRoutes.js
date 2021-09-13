@@ -9,6 +9,12 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+        return res
+            .status(400)
+            .send({ error: "Must provide email and password" });
+    }
+
     try {
         const user = new User({ email, password });
         await user.save();
@@ -26,7 +32,7 @@ router.post("/signin", async (req, res) => {
 
     if (!email || !password) {
         return res
-            .status(422)
+            .status(400)
             .send({ error: "Must provide email and password" });
     }
 
